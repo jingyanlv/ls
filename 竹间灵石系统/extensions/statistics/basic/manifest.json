@@ -1,0 +1,1 @@
+{"id":"statistics.basic","name":"基础拾光统计","version":"1.0.0","type":"statistics","description":"基于事件与交易记录生成基础统计","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["statistics.card","events.listen"],"compatibleCoreVersion":"^1.0.0","enabled":true}

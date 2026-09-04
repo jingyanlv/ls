@@ -1,0 +1,1 @@
+{"id":"theme.bamboo-day","name":"竹间清昼","version":"1.0.0","type":"theme","description":"默认竹青与淡金主题","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["theme.tokens"],"compatibleCoreVersion":"^1.0.0","enabled":true}

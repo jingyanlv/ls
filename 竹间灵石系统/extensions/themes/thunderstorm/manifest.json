@@ -1,0 +1,1 @@
+{"id":"theme.thunderstorm","name":"雷暴","version":"1.0.0","type":"theme","description":"雷云骤雨与电光裂隙","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["theme.tokens","theme.background","theme.decoration","theme.animation"],"compatibleCoreVersion":"^1.0.0","enabled":true}

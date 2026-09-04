@@ -1,0 +1,1 @@
+{"id":"system.editor","name":"墨房编辑系统","version":"1.0.0","type":"system","description":"界面编辑、配置导入、差异预览与架构说明","entry":"entry.js","dependencies":["task.standard","product.lifestyle"],"optionalDependencies":[],"assets":[],"capabilities":["settings.section","config.read","config.write","extension.inspect"],"compatibleCoreVersion":"^1.0.0","enabled":true}

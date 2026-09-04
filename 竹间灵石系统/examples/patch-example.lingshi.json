@@ -1,0 +1,20 @@
+{
+  "$schema": "lingshi-patch/v2",
+  "schemaVersion": 2,
+  "operations": [
+    {
+      "op": "set",
+      "collection": "tasks.items",
+      "id": "learn-read",
+      "field": "reward",
+      "value": 60
+    },
+    {
+      "op": "multiply",
+      "collection": "tasks.items",
+      "where": { "field": "category", "equals": "learning" },
+      "field": "reward",
+      "factor": 1.2
+    }
+  ]
+}

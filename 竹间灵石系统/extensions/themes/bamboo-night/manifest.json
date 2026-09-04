@@ -1,0 +1,1 @@
+{"id":"theme.bamboo-night","name":"夜竹藏金","version":"1.0.0","type":"theme","description":"免费深竹夜色主题","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["theme.tokens","theme.decoration"],"compatibleCoreVersion":"^1.0.0","enabled":true}

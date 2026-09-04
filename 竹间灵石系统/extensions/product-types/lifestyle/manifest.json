@@ -1,0 +1,1 @@
+{"id":"product.lifestyle","name":"生活心愿类型","version":"1.0.0","type":"product-type","description":"现金、休息时长、许可与自定义心愿","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["shop.product-type"],"compatibleCoreVersion":"^1.0.0","enabled":true}

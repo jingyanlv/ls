@@ -1,0 +1,1 @@
+{"id":"product.theme-unlock","name":"主题解锁商品","version":"1.0.0","type":"product-type","description":"以灵石限时解锁主题","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["shop.product-type","theme.grant"],"compatibleCoreVersion":"^1.0.0","enabled":true}

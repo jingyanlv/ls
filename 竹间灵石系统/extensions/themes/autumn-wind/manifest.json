@@ -1,0 +1,1 @@
+{"id":"theme.autumn-wind","name":"秋风","version":"1.0.0","type":"theme","description":"长风雁影与金红落叶","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["theme.tokens","theme.background","theme.decoration","theme.animation"],"compatibleCoreVersion":"^1.0.0","enabled":true}

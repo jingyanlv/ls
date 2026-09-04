@@ -1,0 +1,1 @@
+{"id":"content.personal-defaults","name":"个人默认内容","version":"1.0.0","type":"content","description":"竹间默认任务与心愿数据","entry":"entry.js","dependencies":["task.standard","product.lifestyle"],"optionalDependencies":[],"assets":[],"capabilities":["data.seed"],"compatibleCoreVersion":"^1.0.0","enabled":true}

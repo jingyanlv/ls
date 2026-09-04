@@ -1,0 +1,1 @@
+{"id":"system.theme-commerce","name":"主题商城桥接","version":"1.0.0","type":"system","description":"根据主题清单自动生成主题商品","entry":"entry.js","dependencies":["product.theme-unlock"],"optionalDependencies":[],"assets":[],"capabilities":["events.listen","shop.write","theme.read"],"compatibleCoreVersion":"^1.0.0","enabled":true}

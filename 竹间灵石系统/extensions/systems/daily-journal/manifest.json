@@ -1,0 +1,1 @@
+{"id":"system.daily-journal","name":"每日日记","version":"1.0.0","type":"system","description":"按日期书写并浏览日记","entry":"entry.js","dependencies":["system.sync-contract"],"optionalDependencies":[],"assets":[],"capabilities":["data.namespace","data.migration","page.register","ui.slot","task.read","events.emit"],"compatibleCoreVersion":"^1.0.0","enabled":true}

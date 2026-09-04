@@ -1,0 +1,1 @@
+{"id":"theme.burning-sky","name":"焚天","version":"1.0.0","type":"theme","description":"赤金天幕与动态流火","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["theme.tokens","theme.background","theme.decoration","theme.animation"],"compatibleCoreVersion":"^1.0.0","enabled":true}

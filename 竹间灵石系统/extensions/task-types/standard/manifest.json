@@ -1,0 +1,1 @@
+{"id":"task.standard","name":"标准修行任务","version":"1.0.0","type":"task-type","description":"提供学习、强化自己与付出类的标准任务","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":[],"capabilities":["task.type"],"compatibleCoreVersion":"^1.0.0","enabled":true}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="可扩展的个人任务、灵石、心愿与主题系统">
+  <title>竹间灵石系统</title>
+  <link rel="stylesheet" href="./styles/core.css">
+</head>
+<body>
+  <div id="theme-layer" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand"><div class="brand-seal">竹</div><div><h1 data-profile-name>竹间</h1><small>LINGSHI · PERSONAL REALM</small></div></div>
+      <div class="header-actions"><span id="today-date"></span><button class="icon-button" id="quick-night" title="昼夜切换">◐</button></div>
+    </header>
+    <nav class="main-nav" id="main-nav" aria-label="主要页面"></nav>
+    <main id="page-root"></main>
+  </div>
+  <button class="secret-gear" id="settings-open" title="进入墨房" aria-label="打开设置">⚙</button>
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="settings-drawer" aria-label="墨房设置">
+    <header class="drawer-header"><div><h2>墨房</h2><p>界面编辑、扩展管理与 AI 批量修改</p></div><button class="bare-button" id="settings-close">×</button></header>
+    <nav class="drawer-nav" id="settings-nav"></nav>
+    <div class="drawer-content" id="settings-content"></div>
+  </aside>
+  <div class="modal-backdrop" id="modal-backdrop"><section class="modal-card" id="modal-card"></section></div>
+  <div class="toast" id="toast"></div>
+  <script src="./core/runtime.js"></script>
+  <script src="./core/storage.js"></script>
+  <script src="./core/services.js"></script>
+  <script src="./core/config-engine.js"></script>
+  <script src="./core/theme-engine.js"></script>
+  <script src="./core/shell.js"></script>
+  <script src="./extensions/registry.generated.js"></script>
+  <script src="./core/boot.js"></script>
+</body>
+</html>

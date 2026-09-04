@@ -1,0 +1,1 @@
+{"id":"theme.cyberpunk","name":"霓虹竹城","version":"1.1.0","type":"theme","description":"赛博夜雨、鎏金电路与动态数据流","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":["../assets/cyber-bamboo-city.png"],"capabilities":["theme.tokens","theme.background","theme.decoration","theme.animation","theme.sound"],"compatibleCoreVersion":"^1.0.0","enabled":true}

@@ -1,0 +1,1 @@
+{"id":"statistics.focus-time","name":"拾时统计","version":"1.0.0","type":"statistics","description":"汇总今日、本周与分类时长","entry":"entry.js","dependencies":["system.focus-timer"],"optionalDependencies":[],"assets":[],"capabilities":["statistics.card","ui.slot","events.listen","timer.read"],"compatibleCoreVersion":"^1.0.0","enabled":true}

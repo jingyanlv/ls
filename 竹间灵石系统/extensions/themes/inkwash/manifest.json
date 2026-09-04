@@ -1,0 +1,1 @@
+{"id":"theme.inkwash","name":"山水未央","version":"1.1.0","type":"theme","description":"宣纸山水、矿物暗金与流动云雾","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":["../assets/ink-mountain-scroll.png"],"capabilities":["theme.tokens","theme.background","theme.decoration","theme.animation"],"compatibleCoreVersion":"^1.0.0","enabled":true}

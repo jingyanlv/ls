@@ -1,0 +1,1 @@
+{"id":"theme.anime","name":"樱庭绘卷","version":"1.1.0","type":"theme","description":"完整二次元美少女主题与动态花瓣","entry":"entry.js","dependencies":[],"optionalDependencies":[],"assets":["../assets/anime-sakura-hero.png"],"capabilities":["theme.tokens","theme.background","theme.decoration","theme.animation","theme.character"],"compatibleCoreVersion":"^1.0.0","enabled":true}
