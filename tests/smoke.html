@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><title>竹间灵石系统冒烟测试</title><div id="result" data-status="RUNNING">RUNNING</div><iframe id="app" src="../竹间灵石系统/index.html" style="width:1280px;height:900px"></iframe><script>
+const out=document.getElementById('result'),frame=document.getElementById('app');let phase=0;
+const assert=(v,m)=>{if(!v)throw Error(m)};
+frame.onload=()=>setTimeout(()=>{try{
+ const w=frame.contentWindow,L=w.Lingshi;assert(L,'Lingshi missing');assert(L.loader.failed.size===0,'extension failure: '+[...L.loader.failed].map(x=>x[0]+':'+x[1].message));assert(L.errors.length===0,'startup errors: '+JSON.stringify(L.errors));
+ assert(L.loader.loaded.size===20,'expected 20 extensions, got '+L.loader.loaded.size);
+ const journal=L.registries.systems.get('system.daily-journal').publicApi,timer=L.registries.systems.get('system.focus-timer').publicApi,sync=L.registries.systems.get('system.sync-contract').publicApi;
+ if(phase===0){
+  const date=new Date().toISOString().slice(0,10),entry=journal.save({date,mood:'明朗',body:'云端冒烟测试日记',tags:['测试'],taskIds:[]});
+  assert(entry.id&&entry.revision===1&&entry.deviceId&&entry.deletedAt===null,'journal sync metadata');
+  L.shell.activePage='page.journal';L.shell.renderPage();assert(w.document.querySelector('h2')?.textContent.includes('竹简'),'journal page');
+  timer.start({categoryId:'learning'});const a=L.services.storage.getState().extensionData['system.focus-timer'].active;a.startedAt=new Date(Date.now()-125000).toISOString();
+  timer.pause();const live=L.services.storage.getState().extensionData['system.focus-timer'].active;live.pauses[live.pauses.length-1].start=new Date(Date.now()-60000).toISOString();timer.resume();const session=timer.end();
+  assert(session.durationMs>60000&&session.durationMs<70000,'timestamp/pause duration '+session.durationMs);assert(session.immutable&&session.revision===1,'immutable session metadata');
+  assert(!L.services.storage.getState().economy.transactions.some(x=>x.meta?.timerSessionId===session.id),'reward must default off');
+  phase=1;frame.contentWindow.location.reload();return;
+ }
+ assert(journal.list().some(x=>x.body==='云端冒烟测试日记'),'journal persistence');assert(timer.sessions().length===1&&!timer.active(),'timer persistence');
+ L.shell.activePage='page.timer';L.shell.renderPage();assert(w.document.querySelector('h2')?.textContent.includes('拾时'),'timer page');
+ for(const id of ['theme.thunderstorm','theme.burning-sky','theme.autumn-wind']){L.services.theme.grant(id,1);L.services.theme.activate(id);assert(w.document.body.dataset.theme===id,'theme activate '+id);assert(w.document.getElementById('theme-layer').children.length>0,'theme layer '+id)}
+ const cfg=L.services.config.exportConfig();assert(cfg.extensionConfig['system.daily-journal']&&cfg.extensionConfig['system.focus-timer'],'config export namespaces');
+ assert(L.services.storage.getState().extensions.migrationVersions['system.daily-journal']===1,'journal migration');
+ out.dataset.status='PASS';out.textContent='PASS: startup, journal, timer recovery math, statistics event path, themes, export and migrations';
+}catch(e){out.dataset.status='FAIL';out.textContent='FAIL: '+e.stack;console.error(e)}},150);
+</script>
