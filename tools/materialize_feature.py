@@ -1,5 +1,5 @@
 from pathlib import Path
-import shutil, zipfile
+import json, shutil, zipfile
 
 root=Path(__file__).resolve().parents[1]
 archive=root/"竹间灵石系统-满意版备份-2026-09-04.zip"
@@ -58,3 +58,19 @@ arch=app/"docs/ARCHITECTURE.md"
 arch.write_text(arch.read_text("utf-8")+"\n\n"+(root/"feature-overlay-docs/ARCHITECTURE-ADDENDUM.md").read_text("utf-8"),"utf-8")
 guide=app/"docs/AI-GUIDE.md"
 guide.write_text(guide.read_text("utf-8")+"\n\n"+(root/"feature-overlay-docs/AI-GUIDE-ADDENDUM.md").read_text("utf-8"),"utf-8")
+
+lines=["// GENERATED FILE. Run tools/build-registry.ps1 after adding or removing an extension.","(function(){"]
+for manifest_file in sorted((app/"extensions").rglob("manifest.json")):
+    manifest=json.loads(manifest_file.read_text("utf-8"))
+    for required in ("id","name","version","type","entry","compatibleCoreVersion"):
+        if not manifest.get(required):
+            raise SystemExit(f"{manifest_file} missing {required}")
+    entry=manifest_file.parent/manifest["entry"]
+    if not entry.exists():
+        raise SystemExit(f"missing entry for {manifest['id']}")
+    rel=entry.relative_to(app).as_posix()
+    lines.append("Lingshi.registerManifest("+json.dumps(manifest,ensure_ascii=False,separators=(",",":"))+");")
+    lines.append("document.write('<script src=\"./"+rel+"\"><\\/script>');")
+lines.extend(["})();",""])
+(app/"extensions/registry.generated.js").write_text("\n".join(lines),"utf-8")
+print(f"Materialized {app} with {len(list((app/'extensions').rglob('manifest.json')))} extensions")
