@@ -1,0 +1,1 @@
+{"id":"system.focus-timer","name":"拾时计时","version":"1.0.0","type":"system","description":"可靠计时、任务关联与不可变记录","entry":"entry.js","dependencies":["system.sync-contract"],"optionalDependencies":[],"assets":[],"capabilities":["data.namespace","data.migration","page.register","ui.slot","task.read","economy.optional","events.emit"],"compatibleCoreVersion":"^1.0.0","enabled":true}
