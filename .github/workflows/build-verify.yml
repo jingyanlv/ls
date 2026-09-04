@@ -1,0 +1,48 @@
+name: Build and verify 竹间灵石系统
+on:
+  push:
+    branches: [feature/daily-journal-timer-themes]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/daily-journal-timer-themes
+      - name: Materialize satisfied version
+        run: python3 tools/materialize_feature.py
+      - name: Check JavaScript and manifests
+        run: |
+          find "竹间灵石系统/core" "竹间灵石系统/extensions" -name '*.js' -print0 | xargs -0 -n1 node --check
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          files=list(Path("竹间灵石系统/extensions").rglob("manifest.json"))
+          for path in files: json.loads(path.read_text("utf-8"))
+          assert len(files)==20, len(files)
+          PY
+      - name: Browser smoke test
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lingshi-server.log 2>&1 &
+          google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=12000 --dump-dom http://127.0.0.1:8765/tests/smoke.html > smoke-dom.txt 2> chrome-console.txt
+          grep 'data-status="PASS"' smoke-dom.txt
+          ! grep 'data-status="FAIL"' smoke-dom.txt
+      - name: Package complete project
+        run: |
+          zip -qr "竹间灵石系统-完整开发版-2026-09-04.zip" "竹间灵石系统"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 竹间灵石系统-完整开发版-2026-09-04
+          path: 竹间灵石系统-完整开发版-2026-09-04.zip
+      - name: Commit generated source and package
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "竹间灵石系统" "竹间灵石系统-完整开发版-2026-09-04.zip"
+          git diff --cached --quiet && exit 0
+          git commit -m "build: materialize verified complete project [skip ci]"
+          git push origin HEAD:feature/daily-journal-timer-themes
